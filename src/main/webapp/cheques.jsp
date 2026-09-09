@@ -214,7 +214,8 @@
                                        oninput="formatearMontoEnVivo(this); actualizarMontoLetrasModal()"
                                        onblur="completarCentavos(this); actualizarMontoLetrasModal()"
                                        onfocus="this.select()"
-                                       maxlength="14">
+                                       maxlength="14"
+                                       onkeydown="SPchar(id, event)">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -442,6 +443,19 @@
             }
 
             return true;
+        }
+        function SPchar(id){
+        	
+        	
+        	const inputField = document.getElementById(id);
+        	
+        	inputField.addEventListener('input', function(event){
+        		let ognTxt = event.target.value;
+        		
+        		let clnTxt = ognTxt.replace(/[^a-zA-Z0-9\s]/g, '');
+        		
+        		event.target.value = clnTxt;
+        	})
         }
     </script>
 </body>
